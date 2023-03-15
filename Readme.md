@@ -1,7 +1,7 @@
 # Личный проект «Readme»
 
 * Студент: [Антон Иванов](https://up.htmlacademy.ru/nodejs-2/3/user/2353465).
-* Наставник: `Неизвестно`.
+* Наставник: [Глеб Клецков](https://htmlacademy.ru/profile/id1487865).
 
 ---
 
