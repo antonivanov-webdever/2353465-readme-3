@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { BlogUserController } from './blog-user.controller';
-import { BlogUserService } from './blog-user.service';
+import { BlogUserMemoryRepository } from "./blog-user-memory.repository";
 
 @Module({
-  controllers: [BlogUserController],
-  providers: [BlogUserService],
+  controllers: [],
+  providers: [BlogUserMemoryRepository],
+  exports: [BlogUserMemoryRepository]
 })
 export class BlogUserModule {}

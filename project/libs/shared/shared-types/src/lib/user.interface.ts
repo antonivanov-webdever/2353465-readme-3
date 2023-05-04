@@ -5,5 +5,5 @@ export interface User {
   lastname: string;
   passwordHash: string;
   avatar?: string;
-  createdAt: number;
+  createdAt?: number;
 }

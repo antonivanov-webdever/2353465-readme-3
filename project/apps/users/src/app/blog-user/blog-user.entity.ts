@@ -1,4 +1,6 @@
-import {User} from "@project/shared/shared-types";
+import { User } from "@project/shared/shared-types";
+import { compare, genSalt, hash } from "bcrypt";
+import { SALT_ROUNDS } from "./blog-user.constant";
 
 export class BlogUserEntity implements User {
   public _id?: string;
@@ -6,7 +8,7 @@ export class BlogUserEntity implements User {
   public firstname: string;
   public lastname: string;
   public passwordHash: string;
-  public avatar?: string;
+  public avatar: string;
   public createdAt: number;
 
   constructor(blogUser: User) {
@@ -25,5 +27,15 @@ export class BlogUserEntity implements User {
     this.passwordHash = blogUser.passwordHash;
     this.avatar = blogUser.avatar;
     this.createdAt = blogUser.createdAt;
+  }
+
+  public async setPassword(password: string): Promise<BlogUserEntity> {
+    const salt = await genSalt(SALT_ROUNDS);
+    this.passwordHash = await hash(password, salt);
+    return this;
+  }
+
+  public async comparePassword(password: string): Promise<boolean> {
+    return compare(password, this.passwordHash);
   }
 }
